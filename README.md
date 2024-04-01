@@ -32,8 +32,9 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWZlZGk5dTVtYzdvaWxhdnN6cWpsOGt4dXF6ZmpkdzZua3dzcWp0NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KK9tIRTXChY7Yx1Vut/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
+Video walkthrough created using ScreenToGif
 
 ## Notes
 For this project, I ran into several challenges. Here are the challenges I faced:
