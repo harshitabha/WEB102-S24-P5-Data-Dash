@@ -9,15 +9,17 @@ import StatsBlock from "./components/StatsBlock";
 import BubbleSelect from "./components/BubbleSelect";
 
 const App = () => {
-  const [cardsInfo, setCards] = useState(null);
+  const [cardsInfo, setCards] = useState({
+    allCards: [],
+    displayedCards: [],
+  });
+  // const [cardsInfo, setCards] = useState(null);
   const [filter, setFilter] = useState({
     search: '',
     cardType: 'All',
     power: 0,
     tough: 0,
   });
-
-  const originalCards = useRef(null);
 
   const bubbleOptions = ["Any", "1", "2", "3", "4", "5+"];
 
@@ -31,11 +33,11 @@ const App = () => {
     const updateCardsDisplay = () => {
       // apply search filter
       let filterSearch = filter.search.length !== 0 ? 
-        originalCards.current.filter((card) => 
+        cardsInfo.allCards.filter((card) => 
         card.name.toLowerCase().indexOf(filter.search) !== -1) :
-        originalCards.current;
+        cardsInfo.allCards;
   
-      // apply type filter
+      /*// apply type filter
       if (filter.cardType === "other") {
         filterSearch = filterSearch.filter((card) => 
           card.type.toLowerCase().indexOf("creature") === -1 &&
@@ -53,20 +55,20 @@ const App = () => {
       // apply toughness filter
       filterSearch = filter.tough !== 0 ? filterSearch.filter((card) => 
         card.toughness >= filter.tough)
-        : filterSearch;
+        : filterSearch;*/
       
       setCards((prevJson) => ({
         ...prevJson,
-        cards: filterSearch
-      }))
+        displayedCards: [...filterSearch]
+      }));
   
     }
 
     if (cardsInfo) updateCardsDisplay();
 
-    console.log(filter.power, filter.tough);
-
-  }, [filter])
+    
+  }, [filter]);
+  useEffect(() => {console.log(cardsInfo);} , [cardsInfo]);
 
   const getNewCards = async () => {
     const apiURL = "https://api.magicthegathering.io/v1/cards?pageSize=50&random=true";
@@ -74,29 +76,27 @@ const App = () => {
     const json = await response.json();
     const cards = json.cards;
     // update the cards json
-    setCards(prevJson => ({
-      ...prevJson,
-      cards
-    }));
-    originalCards.current = cards; // save this to be used during filters
+    setCards({
+      displayedCards: [...cards],
+      allCards: [...cards],
+    });
   }
 
   const calcCards = (type) => {
     let total = 0;
-    if (cardsInfo) {
-      for(let t = 0; t < cardsInfo.cards.length; t++) {
+    if (cardsInfo.displayedCards) {
+      for(let t = 0; t < cardsInfo.displayedCards.length; t++) {
         if (type === "other" &&
-          cardsInfo.cards[t].type.toLowerCase().indexOf("creature") === -1 &&
-          cardsInfo.cards[t].type.toLowerCase().indexOf("sorcery") === -1 &&
-          cardsInfo.cards[t].type.toLowerCase().indexOf("enchantment") === -1) total++;
-        else if (cardsInfo.cards[t].type.indexOf(type) != -1) total++;
+          cardsInfo.displayedCards[t].type.toLowerCase().indexOf("creature") === -1 &&
+          cardsInfo.displayedCards[t].type.toLowerCase().indexOf("sorcery") === -1 &&
+          cardsInfo.displayedCards[t].type.toLowerCase().indexOf("enchantment") === -1) total++;
+        else if (cardsInfo.displayedCards[t].type.indexOf(type) != -1) total++;
       }
     }
     return total;
   }
 
   const handleFilterChange = (e) => {
-    console.log(e.target.name, e.target.value);
     if (e.target.name === "selectType") {
       setFilter((prevState) => ({
         ...prevState,
@@ -113,20 +113,13 @@ const App = () => {
       const start = name.indexOf("-") + 1;
       const end = name.indexOf("-", start);
       const type = name.substring(start, end);
-      console.log(`val set: ${name.slice(-1)}`)
       setFilter((prevState) => ({
         ...prevState,
         [type]: name.slice(-1),
       }));
 
-      // updateActiveFilter(type, name.slice(-1));
     }
   }
-
-  // const updateActiveFilter = (target) => {
-
-  //   target.classList.add('active');
-  // }
 
   const refreshCards = () => {
     getNewCards();
@@ -148,7 +141,7 @@ const App = () => {
       <div className="stats-container">
         <StatsBlock 
           type="Total Cards"
-          info={cardsInfo ? cardsInfo.cards.length : 0}/>
+          info={cardsInfo.displayedCards ? cardsInfo.displayedCards.length : 0}/>
         <StatsBlock 
           type="Creatures"
           info={calcCards('Creature')}/>
@@ -205,23 +198,23 @@ const App = () => {
       <div className="data-body dash-elem">
         <Section 
           header="Name"
-          content={cardsInfo ? cardsInfo.cards.map((cards) => cards.name): null}
+          content={cardsInfo.displayedCards ? cardsInfo.displayedCards.map((cards) => cards.name): null}
           keyInfo="name"/>
         <Section 
           header="Mana Cost"
-          content={cardsInfo ? cardsInfo.cards.map((cards) => cards.manaCost): null}
+          content={cardsInfo.displayedCards ? cardsInfo.displayedCards.map((cards) => cards.manaCost): null}
           keyInfo="mc"/>
         <Section 
           header="Type"
-          content={cardsInfo ? cardsInfo.cards.map((cards) => cards.type): null}
+          content={cardsInfo.displayedCards ? cardsInfo.displayedCards.map((cards) => cards.type): null}
           keyInfo="type"/>
         <Section 
           header="Power"
-          content={cardsInfo ? cardsInfo.cards.map((cards) => cards.power): null}
+          content={cardsInfo.displayedCards ? cardsInfo.displayedCards.map((cards) => cards.power): null}
           keyInfo="power"/>
         <Section 
           header="Toughness"
-          content={cardsInfo ? cardsInfo.cards.map((cards) => cards.toughness): null}
+          content={cardsInfo.displayedCards ? cardsInfo.displayedCards.map((cards) => cards.toughness): null}
           keyInfo="tough"/>
       </div>
     </>

@@ -8,7 +8,6 @@ const BubbleSelect = (props) => {
             <br />
             <div className="bubble-container">
                 {props.options ? props.options.map((bOption, index) => {
-                    {console.log(`index: ${index} \t active: ${props.active}\t ${index == props.active}`)}
                     return <button 
                         key={`bOption-${props.type}-${index}`} 
                         className={`bOption ${index == props.active ? 'active' : ''}`}
