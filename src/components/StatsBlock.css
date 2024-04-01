@@ -1,0 +1,14 @@
+.stats-body {
+    padding: 10px;
+    text-align: center;
+    min-width: 95px;
+}
+
+.stats-text {
+    font-weight: bold;
+}
+
+.text {
+    margin: 5px;
+    font-size: 20px;
+}

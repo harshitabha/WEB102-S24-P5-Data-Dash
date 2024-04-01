@@ -1,42 +1,90 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  background-image: url("https://images.pixexid.com/a-tranquil-waterfall-in-a-magical-forest-where-shimmering-crystals-grow-from-th-ffdic1ci.jpeg");
+  background-color: rgba(29, 29, 29, 0.486);
+  background-blend-mode: overlay;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.data-body {
+  margin: 1.5em;
+  display: flex;
+  justify-content: space-evenly;
+  max-height: auto;
+  overflow-y: scroll;
+  height: 60vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dash-elem {
+  background-color: rgba(49, 49, 49, 0.575);
+  border-radius: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.card {
-  padding: 2em;
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  margin: 1.5em 2em 0;
+  align-self: center;
+  justify-content: space-around;
 }
 
-.read-the-docs {
-  color: #888;
+.filter-label {
+  font-size: 18px;;
+}
+
+.filter {
+  margin: 0 20px;
+}
+
+#selectType {
+  font: inherit;
+  margin-top: 5px;
+  padding: 9px;
+  border-radius: 5px;
+}
+
+.refreshBtn {
+  margin: 5px;
+}
+
+.icon {
+  height: 18px;
+}
+
+.refresh-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #828282; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a; 
 }

@@ -1,0 +1,21 @@
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1.5em;
+    align-items: center;
+    /* background-color: rgba(27, 27, 27, 0.6); */
+}
+
+.title {
+    font-size: 36px;
+}
+
+.search {
+    background-color: rgba(53, 53, 53, 0.3);
+    border: 1px solid white;
+    padding: 7px;
+    border-radius: 20px;
+    font: inherit;
+    margin-right: 10px;
+}

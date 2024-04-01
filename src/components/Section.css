@@ -1,0 +1,12 @@
+.table-elem {
+    width: 100%;
+    font-size: 18px;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-header {
+    text-align: center;
+    margin: 10px;
+}
