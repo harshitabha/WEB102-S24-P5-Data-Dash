@@ -2,11 +2,19 @@
     width: 100%;
     font-size: 18px;
     list-style: none;
+    list-style-position: inside;
     text-align: center;
     margin-bottom: 10px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
 }
 
 .section-header {
     text-align: center;
     margin: 10px;
+}
+
+.section-list {
+    padding: 0;
 }
