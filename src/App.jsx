@@ -64,7 +64,7 @@ const App = () => {
   
     }
 
-    if (cardsInfo) updateCardsDisplay();
+    if (cardsInfo.displayedCards) updateCardsDisplay();
 
     
   }, [filter]);
