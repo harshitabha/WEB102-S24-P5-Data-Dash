@@ -36,11 +36,11 @@ Here's a walkthrough of implemented user stories:
 <!-- Replace this with whatever GIF tool you used! -->
 
 ## Notes
-For this project, I ran into several challenges. Here are the challenges I faced
-* Difficulty figuring out how to remove the filters from the filtered list. It was easier to figure out how to remove all the filters but removing individual ones was difficult
-* Determining what URL parameters I had to use to randomize the cards that are fetched every time and the number of cards fetched because the MTG API documentation was a little confusing
-* Making sure the right state values were passed through properly because I lifted the state up to the App-level component
-* Figuring out the best way to organize the data in a table setup (I ended up utilizing a flexbox to do this)
+For this project, I ran into several challenges. Here are the challenges I faced:
+* Difficulty figuring out how to remove the filters from the filtered list. It was easier to figure out how to remove all the filters but removing individual ones was difficult. To resolve this I created a state variable that stored both the filtered list of cards, and the original result of cards from the API.
+* Determining what URL parameters I had to use to randomize the cards that are fetched every time and the number of cards fetched due to the MTG API documentation being confusing.
+* Making sure the right state values were passed through properly because I lifted the state up to the App-level component. Due to this I had to pass through any onClick handlers and state variables.
+* Figuring out the best way to organize the data in a table setup (I ended up utilizing a flexbox to do this).
 
 ## License
 
