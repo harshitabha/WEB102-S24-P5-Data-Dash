@@ -37,7 +37,7 @@ const App = () => {
         card.name.toLowerCase().indexOf(filter.search) !== -1) :
         cardsInfo.allCards;
   
-      /*// apply type filter
+      // apply type filter
       if (filter.cardType === "other") {
         filterSearch = filterSearch.filter((card) => 
           card.type.toLowerCase().indexOf("creature") === -1 &&
@@ -48,14 +48,14 @@ const App = () => {
       }
         
       // apply power filter
-      filterSearch = filter.power !== 0 ? filterSearch.filter((card) => 
+      filterSearch = filter.power != 0 ? filterSearch.filter((card) => 
         card.power >= filter.power)
         : filterSearch;
         
       // apply toughness filter
-      filterSearch = filter.tough !== 0 ? filterSearch.filter((card) => 
+      filterSearch = filter.tough != 0 ? filterSearch.filter((card) => 
         card.toughness >= filter.tough)
-        : filterSearch;*/
+        : filterSearch;
       
       setCards((prevJson) => ({
         ...prevJson,
